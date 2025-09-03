@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="../AE_XSD_schema.xsd">
+  <ELEMENTS>
+    <ECUs>
+      <SHORT-NAME name="ECU_Main"/>
+      <SoCs>
+        <SHORT-NAME name="SoC_A"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="simulated"/>
+        <UCIe-INTERFACE Mode="host">
+          <Endpoint_DMA_Configuration Frequency="100"/>
+        </UCIe-INTERFACE>
+
+        <CPU_Cluster>
+        <Operating-System>
+          <ARMV9-Family/>
+           <AFM-CortexA510/>
+          </ARMV9-Family>
+            <Linux Show_UART_Terminal="true">
+              <Ubuntu_File_System>22.04</Ubuntu_File_System>
+            </Linux>
+          </Operating-System>
+              
+          
+        </CPU_Cluster>
+
+        <!-- Two chiplets grouped properly -->
+        <Chiplets>
+          <Chiplet>
+            <SHORT-NAME name="Chiplet_1"/>
+            <AXI-BUS width="128" frequency="1000000"/>
+            <ETHERNET-INTERFACE Mode="simulated"/>
+            <UCIe-INTERFACE Mode="endpoint">
+              <D2D_Configuration DestChipletRef="Chiplet_2">
+                <LINK_WIDTH value="256"/>
+                <LINK_FREQUENCY value="2000"/>
+                <PROTOCOL_CONV_LATENCY unit="ns" value="5"/>
+                <CHIPLET_LINK_LATENCY unit="ns" value="10"/>
+                <LOGICAL_IF_DELAY unit="ns" value="1"/>
+                <PHYSICAL_IF_DELAY unit="ns" value="1"/>
+              </D2D_Configuration>
+            </UCIe-INTERFACE>
+          </Chiplet>
+
+          <Chiplet>
+            <SHORT-NAME name="Chiplet_2"/>
+            <AXI-BUS width="128" frequency="1000000"/>
+            <ETHERNET-INTERFACE Mode="simulated"/>
+            <UCIe-INTERFACE Mode="endpoint">
+              <D2D_Configuration DestChipletRef="Chiplet_1">
+                <LINK_WIDTH value="256"/>
+                <LINK_FREQUENCY value="2000"/>
+                <PROTOCOL_CONV_LATENCY unit="ns" value="5"/>
+                <CHIPLET_LINK_LATENCY unit="ns" value="10"/>
+                <LOGICAL_IF_DELAY unit="ns" value="1"/>
+                <PHYSICAL_IF_DELAY unit="ns" value="1"/>
+              </D2D_Configuration>
+            </UCIe-INTERFACE>
+          </Chiplet>
+        </Chiplets>
+      </SoCs>
+    </ECUs>
+  </ELEMENTS>
+</AR-PACKAGE>
