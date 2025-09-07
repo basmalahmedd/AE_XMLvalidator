@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="../AE_XSD_schema.xsd">
+
+    <ELEMENTS>
+
+        <Simulation-Time value="1000000" unit="ns" />
+
+        <SENDER-RECEIVER-INTERFACE >
+            <SHORT-NAME name="Interface"/>
+
+            <DATA-ELEMENTS>
+                <VARIABLE-DATA-PROTOTYPE>
+                    <SHORT-NAME name="Variable1"/>
+                    <TYPE-TREF>
+                        <Array-of-uint8 No_Of_Bytes="10000">
+                            <Fixed-values-generated Default-Value="150" />
+                        </Array-of-uint8>
+                    </TYPE-TREF>
+                </VARIABLE-DATA-PROTOTYPE>              
+            </DATA-ELEMENTS>
+        </SENDER-RECEIVER-INTERFACE >
+
+        <APPLICATION-SW-COMPONENT-TYPE>
+            <SHORT-NAME name="App_SW_Component"/>
+
+            <PORTS>
+                <P-PORT-PROTOTYPE>
+                    <SHORT-NAME name="P_Port"/>
+                    <PROVIDED-INTERFACE-TREF DEST = "Interface1"/>
+                </P-PORT-PROTOTYPE>
+
+                <R-PORT-PROTOTYPE>
+                    <SHORT-NAME name="R_Port"/>
+                    <REQUIRED-INTERFACE-TREF DEST = "Interface2" />
+                </R-PORT-PROTOTYPE>
+            </PORTS>
+
+            <INTERNAL-BEHAVIORS>
+
+                <SWC-INTERNAL-BEHAVIOR>
+                    <SHORT-NAME name="Internal_Behavior"/>
+
+                    <RUNNABLES>
+                        <RUNNABLE-ENTITY>
+                            <SHORT-NAME name="Runnable"/>
+
+                            <DATA-READ-ACCESS>
+                                <VARIABLE-ACCESS>
+                                    <SHORT-NAME name="Variable2"/>
+                                    <ACCESSED-VARIABLE> 
+                                        <AUTOSAR-VARIABLE-IREF>
+                                            <PORT-PROTOTYPE-REF DEST = "P_Port"/>
+                                            <TARGET-DATA-PROTOTYPE-REF DEST = "Target_Variable1"/>
+                                        </AUTOSAR-VARIABLE-IREF>
+                                    </ACCESSED-VARIABLE> 
+                                </VARIABLE-ACCESS>
+                            </DATA-READ-ACCESS>
+
+                            <DATA-WRITE-ACCESS>
+                                <VARIABLE-ACCESS>
+                                    <SHORT-NAME name="Variable3"/>
+                                    <ACCESSED-VARIABLE> 
+                                        <AUTOSAR-VARIABLE-IREF>
+                                            <PORT-PROTOTYPE-REF DEST = "R_Port"/>
+                                            <TARGET-DATA-PROTOTYPE-REF DEST = "Target_Variable2"/>
+                                        </AUTOSAR-VARIABLE-IREF>
+                                    </ACCESSED-VARIABLE> 
+                                </VARIABLE-ACCESS>
+                            </DATA-WRITE-ACCESS>
+                        </RUNNABLE-ENTITY>
+                    </RUNNABLES>
+
+                    <EVENTS>
+                        <TIMING-EVENT>
+                            <SHORT-NAME name="Timing_Event"/>
+                            <START-ON-EVENT-REF DEST = "Event1"/>
+                            <CUSTOM-BEHAVIOR-REF DEST = "Custom_Behavior1"/>
+                            <PERIOD value="100000" unit="ns"/>
+                        </TIMING-EVENT>
+                    </EVENTS>
+
+                </SWC-INTERNAL-BEHAVIOR>
+            </INTERNAL-BEHAVIORS> 
+        </APPLICATION-SW-COMPONENT-TYPE>
+
+        <SWC-CUSTOM-BEHAVIOR>
+            <SHORT-NAME name="Custom_Behavior1"/>
+            <OPERATIONS-SEQUENCE>
+                <OPERATION>
+                    <WRITE>
+                        <IREF DEST = "Variable1"/>
+                    </WRITE>
+                </OPERATION>
+            </OPERATIONS-SEQUENCE>
+        </SWC-CUSTOM-BEHAVIOR>
+
+        <PRE-BUILT-APPLICATION>
+            <SHORT-NAME name = "MyApp_Controller" />
+            <PATH DEST = "/home/user/applications/MyApp_Controller.bin" />
+        </PRE-BUILT-APPLICATION>
+
+        <Network-Topology>
+                <InterECU_communication>
+                    <CAN-BUS CAN-FD = "true" >
+                      <SHORT-NAME name="CAN_Bus_1"/>
+                      <BaudRate value="500000"/>
+                      <INTERFACE-TREF DEST="Interface1"/>
+                    </CAN-BUS>
+
+                    <Eth-Switch>
+                        <SHORT-NAME name="Eth_Switch_1"/>
+                        <INTERFACE-TREF DEST="Interface2"/> 
+                    </Eth-Switch>
+                    
+                </InterECU_communication>
+        </Network-Topology>
+
+    <ECUs>
+      <SHORT-NAME name="ECU_1"/>
+      
+      <SoCs>
+        <SHORT-NAME name="SoC_1"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="simulated"/>
+        <UCIe-INTERFACE Mode="host">
+          <Endpoint_DMA_Configuration Frequency="110"/>
+        </UCIe-INTERFACE>
+        <CPU_Cluster>
+          <Operating-System>
+            <Linux Show_UART_Terminal="true">
+              <Ubuntu_File_System>22.04</Ubuntu_File_System>
+            </Linux>
+          </Operating-System>
+          <ARMV8-Family>
+            <CortexA72 CoresPerCluster="4">
+              <SHORT-NAME name="MainCortex"/>
+              <Frequency value="2000"/>
+            </CortexA72>
+          </ARMV8-Family>
+        </CPU_Cluster>
+      </SoCs>
+
+      <SoCs>
+        <SHORT-NAME name="SoC_2"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="native"/>
+        <UCIe-INTERFACE Mode="endpoint">
+          <Endpoint_DMA_Configuration Frequency="120"/>
+        </UCIe-INTERFACE>
+        <CPU_Cluster>
+          <Operating-System>
+            <Linux Show_UART_Terminal="false">
+              <Buildroot_File_System>2024.02</Buildroot_File_System>
+            </Linux>
+          </Operating-System>
+          <ARMV7-Family>
+            <CortexM7 CoresPerCluster="1">
+              <SHORT-NAME name="SecondaryCortex"/>
+              <Frequency value="1000"/>
+            </CortexM7>
+          </ARMV7-Family>
+        </CPU_Cluster>
+      </SoCs>
+
+    </ECUs>
+
+    <ECUs>
+      <SHORT-NAME name="ECU_2"/>
+
+
+      <SoCs>
+        <SHORT-NAME name="SoC_2_1"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="simulated"/>
+        <UCIe-INTERFACE Mode="host">
+          <Endpoint_DMA_Configuration Frequency="110"/>
+        </UCIe-INTERFACE>
+        <CPU_Cluster>
+          <Operating-System>
+            <Linux Show_UART_Terminal="true">
+              <Ubuntu_File_System>22.04</Ubuntu_File_System>
+            </Linux>
+          </Operating-System>
+          <ARMV8-Family>
+            <CortexA72 CoresPerCluster="4">
+              <SHORT-NAME name="MainCortex"/>
+              <Frequency value="1000000000"/>
+            </CortexA72>
+          </ARMV8-Family>
+        </CPU_Cluster>
+      </SoCs>
+
+
+      <SoCs>
+        <SHORT-NAME name="SoC_2_2"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="native"/>
+        <UCIe-INTERFACE Mode="endpoint">
+          <Endpoint_DMA_Configuration Frequency="120"/>
+        </UCIe-INTERFACE>
+        <CPU_Cluster>
+          <Operating-System>
+            <Linux Show_UART_Terminal="false">
+              <Buildroot_File_System>2024.02</Buildroot_File_System>
+            </Linux>
+          </Operating-System>
+          <ARMV7-Family>
+            <CortexM7 CoresPerCluster="1">
+              <SHORT-NAME name="SecondaryCortex"/>
+              <Frequency value="800000000"/> 
+            </CortexM7>
+          </ARMV7-Family>
+        </CPU_Cluster>
+      </SoCs>
+      <SoCs>
+        <SHORT-NAME name="SoC_2_3"/>
+        <AXI-BUS width="256" frequency="1000000"/>
+        <ETHERNET-INTERFACE Mode="simulated"/>
+        <UCIe-INTERFACE Mode="host">
+          <Endpoint_DMA_Configuration Frequency="130"/>
+        </UCIe-INTERFACE>
+        <CPU_Cluster>
+          <Operating-System>
+            <Linux Show_UART_Terminal="true">
+              <Ubuntu_File_System>22.04</Ubuntu_File_System>
+            </Linux>
+          </Operating-System>
+          <ARMV9-Family>
+            <AFM-CortexA720 CoresPerCluster="1">
+              <SHORT-NAME name="AdvancedCortex"/>
+              <Frequency value="1000000000"/> 
+            </AFM-CortexA720>
+          </ARMV9-Family>
+        </CPU_Cluster>
+      </SoCs>
+
+    </ECUs>
+
+    </ELEMENTS>
+</AR-PACKAGE>

@@ -15,16 +15,16 @@ def main():
 
     def validate_one(xml_path: Path):
         print(f"\n--- Validating: {xml_path} ---")
-        errors = list(schema.iter_errors(xml_path))  # 
+        errors = list(schema.iter_errors(xml_path))
 
         if not errors:
-            print(" OK: Schema-valid ✓")
+            print(" OK: Schema-valid ")
         else:
-            print(f"❌ INVALID: Found {len(errors)} errors")
+            print(f" INVALID: Found {len(errors)} errors")
             for i, err in enumerate(errors, 1):
                 print(f"[{i}] Path={err.path} Reason={err.reason}")
 
-    # Handle single XML file or folder
+
     if target.is_dir():
         for xml_file in sorted(target.glob("*.xml")):
             validate_one(xml_file)
