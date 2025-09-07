@@ -117,126 +117,145 @@
                 </InterECU_communication>
         </Network-Topology>
 
-    <ECUs>
-      <SHORT-NAME name="ECU_1"/>
-      
-      <SoCs>
-        <SHORT-NAME name="SoC_1"/>
-        <AXI-BUS width="256" frequency="1000000"/>
-        <ETHERNET-INTERFACE Mode="simulated"/>
-        <UCIe-INTERFACE Mode="host">
-          <Endpoint_DMA_Configuration Frequency="110"/>
-        </UCIe-INTERFACE>
-        <CPU_Cluster>
-          <Operating-System>
-            <Linux Show_UART_Terminal="true">
-              <Ubuntu_File_System>22.04</Ubuntu_File_System>
-            </Linux>
-          </Operating-System>
-          <ARMV8-Family>
-            <CortexA72 CoresPerCluster="4">
-              <SHORT-NAME name="MainCortex"/>
-              <Frequency value="2000"/>
-            </CortexA72>
-          </ARMV8-Family>
-        </CPU_Cluster>
-      </SoCs>
+    
+        <ECUs>
+          <SHORT-NAME name="ECU_1"/>
+          
+          <SoCs>
+            <SHORT-NAME name="SoC_1"/>
+            <AXI-BUS width="256" frequency="1000000"/>
+            <ETHERNET-INTERFACE Mode="simulated"/>
+            <UCIe-INTERFACE Mode="host">
+              <Endpoint_DMA_Configuration Frequency="110"/>
+            </UCIe-INTERFACE>
+            <CPU_Cluster>
+              <Operating-System>
+                <Linux Show_UART_Terminal="true">
+                  <Ubuntu_File_System>22.04</Ubuntu_File_System>
+                </Linux>
+              </Operating-System>
+              <ARMV8-Family>
+                <CortexA72 CoresPerCluster="4">
+                  <SHORT-NAME name="MainCortex"/>
+                  <Frequency value="2000"/>
+                </CortexA72>
+              </ARMV8-Family>
+            </CPU_Cluster>
+          </SoCs>
 
-      <SoCs>
-        <SHORT-NAME name="SoC_2"/>
-        <AXI-BUS width="256" frequency="1000000"/>
-        <ETHERNET-INTERFACE Mode="native"/>
-        <UCIe-INTERFACE Mode="endpoint">
-          <Endpoint_DMA_Configuration Frequency="120"/>
-        </UCIe-INTERFACE>
-        <CPU_Cluster>
-          <Operating-System>
-            <Linux Show_UART_Terminal="false">
-              <Buildroot_File_System>2024.02</Buildroot_File_System>
-            </Linux>
-          </Operating-System>
-          <ARMV7-Family>
-            <CortexM7 CoresPerCluster="1">
-              <SHORT-NAME name="SecondaryCortex"/>
-              <Frequency value="1000"/>
-            </CortexM7>
-          </ARMV7-Family>
-        </CPU_Cluster>
-      </SoCs>
+          <SoCs>
+            <SHORT-NAME name="SoC_2"/>
+            <AXI-BUS width="256" frequency="1000000"/>
+            <ETHERNET-INTERFACE Mode="native"/>
+            <UCIe-INTERFACE Mode="endpoint">
+              <Endpoint_DMA_Configuration Frequency="120"/>
+            </UCIe-INTERFACE>
+            <CPU_Cluster>
+              <Operating-System>
+                <Linux Show_UART_Terminal="false">
+                  <Buildroot_File_System>2024.02</Buildroot_File_System>
+                </Linux>
+              </Operating-System>
+              <ARMV7-Family>
+                <CortexM7 CoresPerCluster="1">
+                  <SHORT-NAME name="SecondaryCortex"/>
+                  <Frequency value="1000"/>
+                </CortexM7>
+              </ARMV7-Family>
+            </CPU_Cluster>
+          </SoCs>
 
-    </ECUs>
+        </ECUs>
 
-    <ECUs>
-      <SHORT-NAME name="ECU_2"/>
-
-
-      <SoCs>
-        <SHORT-NAME name="SoC_2_1"/>
-        <AXI-BUS width="256" frequency="1000000"/>
-        <ETHERNET-INTERFACE Mode="simulated"/>
-        <UCIe-INTERFACE Mode="host">
-          <Endpoint_DMA_Configuration Frequency="110"/>
-        </UCIe-INTERFACE>
-        <CPU_Cluster>
-          <Operating-System>
-            <Linux Show_UART_Terminal="true">
-              <Ubuntu_File_System>22.04</Ubuntu_File_System>
-            </Linux>
-          </Operating-System>
-          <ARMV8-Family>
-            <CortexA72 CoresPerCluster="4">
-              <SHORT-NAME name="MainCortex"/>
-              <Frequency value="1000000000"/>
-            </CortexA72>
-          </ARMV8-Family>
-        </CPU_Cluster>
-      </SoCs>
+        <ECUs>
+            <SHORT-NAME name="ECU_2"/>
 
 
-      <SoCs>
-        <SHORT-NAME name="SoC_2_2"/>
-        <AXI-BUS width="256" frequency="1000000"/>
-        <ETHERNET-INTERFACE Mode="native"/>
-        <UCIe-INTERFACE Mode="endpoint">
-          <Endpoint_DMA_Configuration Frequency="120"/>
-        </UCIe-INTERFACE>
-        <CPU_Cluster>
-          <Operating-System>
-            <Linux Show_UART_Terminal="false">
-              <Buildroot_File_System>2024.02</Buildroot_File_System>
-            </Linux>
-          </Operating-System>
-          <ARMV7-Family>
-            <CortexM7 CoresPerCluster="1">
-              <SHORT-NAME name="SecondaryCortex"/>
-              <Frequency value="800000000"/> 
-            </CortexM7>
-          </ARMV7-Family>
-        </CPU_Cluster>
-      </SoCs>
-      <SoCs>
-        <SHORT-NAME name="SoC_2_3"/>
-        <AXI-BUS width="256" frequency="1000000"/>
-        <ETHERNET-INTERFACE Mode="simulated"/>
-        <UCIe-INTERFACE Mode="host">
-          <Endpoint_DMA_Configuration Frequency="130"/>
-        </UCIe-INTERFACE>
-        <CPU_Cluster>
-          <Operating-System>
-            <Linux Show_UART_Terminal="true">
-              <Ubuntu_File_System>22.04</Ubuntu_File_System>
-            </Linux>
-          </Operating-System>
-          <ARMV9-Family>
-            <AFM-CortexA720 CoresPerCluster="1">
-              <SHORT-NAME name="AdvancedCortex"/>
-              <Frequency value="1000000000"/> 
-            </AFM-CortexA720>
-          </ARMV9-Family>
-        </CPU_Cluster>
-      </SoCs>
+            <SoCs>
+              <SHORT-NAME name="SoC_2_1"/>
+              <AXI-BUS width="256" frequency="1000000"/>
+              <ETHERNET-INTERFACE Mode="simulated"/>
+              <UCIe-INTERFACE Mode="host">
+                <Endpoint_DMA_Configuration Frequency="110"/>
+              </UCIe-INTERFACE>
+              <CPU_Cluster>
+                <Operating-System>
+                  <Linux Show_UART_Terminal="true">
+                    <Ubuntu_File_System>22.04</Ubuntu_File_System>
+                  </Linux>
+                </Operating-System>
+                <ARMV8-Family>
+                  <CortexA72 CoresPerCluster="4">
+                    <SHORT-NAME name="MainCortex"/>
+                    <Frequency value="1000000000"/>
+                  </CortexA72>
+                </ARMV8-Family>
+              </CPU_Cluster>
+            </SoCs>
 
-    </ECUs>
 
-    </ELEMENTS>
+            <SoCs>
+              <SHORT-NAME name="SoC_2_2"/>
+              <AXI-BUS width="256" frequency="1000000"/>
+              <ETHERNET-INTERFACE Mode="native"/>
+              <UCIe-INTERFACE Mode="endpoint">
+                <Endpoint_DMA_Configuration Frequency="120"/>
+              </UCIe-INTERFACE>
+              <CPU_Cluster>
+                <Operating-System>
+                  <Linux Show_UART_Terminal="false">
+                    <Buildroot_File_System>2024.02</Buildroot_File_System>
+                  </Linux>
+                </Operating-System>
+                <ARMV7-Family>
+                  <CortexM7 CoresPerCluster="1">
+                    <SHORT-NAME name="SecondaryCortex"/>
+                    <Frequency value="800000000"/> 
+                  </CortexM7>
+                </ARMV7-Family>
+              </CPU_Cluster>
+            </SoCs>
+            <SoCs>
+              <SHORT-NAME name="SoC_2_3"/>
+              <AXI-BUS width="256" frequency="1000000"/>
+              <ETHERNET-INTERFACE Mode="simulated"/>
+              <UCIe-INTERFACE Mode="host">
+                <Endpoint_DMA_Configuration Frequency="130"/>
+              </UCIe-INTERFACE>
+              <CPU_Cluster>
+                <Operating-System>
+                  <Linux Show_UART_Terminal="true">
+                    <Ubuntu_File_System>22.04</Ubuntu_File_System>
+                  </Linux>
+                </Operating-System>
+                <ARMV9-Family>
+                  <AFM-CortexA720 CoresPerCluster="1">
+                    <SHORT-NAME name="AdvancedCortex"/>
+                    <Frequency value="1000000000"/> 
+                  </AFM-CortexA720>
+                </ARMV9-Family>
+              </CPU_Cluster>
+            </SoCs>
+         </ECUs>
+
+            <HW-SW-MAPPING ClusterRef="/ECU_1/SoC_1/CPU_Cluster/MainCortex">
+        <Cluster-PrebuiltApplication-Mapping 
+            PrebuiltApplicationRef="/prebuilt-application-A"/>
+            </HW-SW-MAPPING>
+
+    <HW-SW-MAPPING ClusterRef="/ECU_1/SoC_1/CPU_Cluster/MainCortex">
+        <Core-PrebuiltApplication-Mapping 
+            CoreId="1" 
+            PrebuiltApplicationRef="/prebuilt-application-B"/>
+    </HW-SW-MAPPING>
+
+    <HW-SW-MAPPING ClusterRef="/ECU_1/SoC_1/CPU_Cluster/MainCortex">
+        <Core-Runnable-Mapping 
+            CoreId="2" 
+            RunnableRef="/App_SW_Component/Internal_Behavior/Runnable" 
+            Load="25000" 
+            Priority="20"/>
+    </HW-SW-MAPPING>
+
+     </ELEMENTS>
 </AR-PACKAGE>
