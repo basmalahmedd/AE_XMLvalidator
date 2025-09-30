@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AR-PACKAGE
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+	<ELEMENTS>
+		<Simulation-Time value="3000" unit="ms" />
+
+		<!-- Interfaces -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="INF1SensorIF" />
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="SensorData_PPascal" />
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated>
+								<Data-Range max="25" min="15" />
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="INF4SensorDataIF_PBAR" />
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="calibratedSensorDataRX"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated>
+								<Data-Range max="25" min="15" />
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="INF2Flash_IF" />
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="FlashData"  />
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated>
+								<Data-Range max="255" min="0" />
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="INF3Alarm_IF"   />
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="AlarmData"  />
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Fixed-values-generated Default-Value="1" />
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+
+
+		<!-- SWCs -->
+
+		<ECUs>
+			<SHORT-NAME name="ECU1" />
+			<SoCs>
+				<SHORT-NAME name="SoC1" />
+				<AXI-BUS />
+				<ETHERNET-INTERFACE />
+				<UCIe-INTERFACE Mode="host" />
+				<Chiplet>
+					<SHORT-NAME name="MAIN_Chiplet" />
+					<AXI-BUS />
+					<ETHERNET-INTERFACE />
+					<UCIe-INTERFACE Mode="host" />
+					<Generic_Hardware>
+						<SHORT-NAME name="MAIN_HWIP_Algo" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="2" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<R-PORT-PROTOTYPE>
+									<SHORT-NAME name="RP_INF4SensorDataIF_PBAR" />
+									<REQUIRED-INTERFACE-TREF DEST="/INF4SensorDataIF_PBAR" />
+								</R-PORT-PROTOTYPE>
+								<!-- <P-PORT-PROTOTYPE>
+									<SHORT-NAME name="PP_INF2Flash_IF" />
+									<PROVIDED-INTERFACE-TREF DEST="/INF2Flash_IF" />
+								</P-PORT-PROTOTYPE> -->
+								<P-PORT-PROTOTYPE>
+									<SHORT-NAME name="PP_INF3Alarm_IF" />
+									<PROVIDED-INTERFACE-TREF DEST="/INF3Alarm_IF" />
+								</P-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<READ>
+										<IREF DEST="/MAIN_HWIP_Algo/RP_INF4SensorDataIF_PBAR" />
+									</READ>
+								</OPERATION>
+								<OPERATION>
+									<LATENCY value="2" unit="ms" />
+								</OPERATION>
+								<OPERATION>
+									<WRITE>
+										<IREF DEST="/MAIN_HWIP_Algo/PP_INF3Alarm_IF" />
+									</WRITE>
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<DATA-RECEIVED-EVENT>
+									<REQUIRED-PORT-TREF DEST="/MAIN_HWIP_Algo/RP_INF4SensorDataIF_PBAR" />
+								</DATA-RECEIVED-EVENT>
+								<!-- <TIMING-EVENT>
+									<PERIOD value="30" unit="ms" />
+								</TIMING-EVENT> -->
+							</EVENT>
+						</INTERNAL-BEHAVIOR>						
+					</Generic_Hardware>
+					<Generic_Hardware>
+						<SHORT-NAME name="MAIN_HWIP_Sensor" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="5" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<R-PORT-PROTOTYPE>
+									<SHORT-NAME name="RP_INF1SensorIF" />
+									<REQUIRED-INTERFACE-TREF
+										DEST="/INF1SensorIF" />
+								</R-PORT-PROTOTYPE>
+								<P-PORT-PROTOTYPE>
+									<SHORT-NAME name="PP_INF4SensorDataIF_PBAR" />
+									<PROVIDED-INTERFACE-TREF DEST="/INF4SensorDataIF_PBAR" />
+								</P-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<READ>
+										<IREF DEST="/MAIN_HWIP_Sensor/RP_INF1SensorIF" />
+									</READ>
+								</OPERATION>
+								<OPERATION>
+									<LATENCY value="2" unit="ms" />
+								</OPERATION>
+								<OPERATION>
+									<WRITE>
+										<IREF DEST="/MAIN_HWIP_Sensor/PP_INF4SensorDataIF_PBAR" />
+									</WRITE>
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<DATA-RECEIVED-EVENT>
+									<REQUIRED-PORT-TREF DEST="/MAIN_HWIP_Sensor/RP_INF1SensorIF" />
+								</DATA-RECEIVED-EVENT>
+							</EVENT>
+						</INTERNAL-BEHAVIOR>
+					</Generic_Hardware>
+					<Generic_Hardware>
+						<SHORT-NAME name="MAIN_HWIP_Flash" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="5" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<P-PORT-PROTOTYPE>
+									<SHORT-NAME name="PP_INF2Flash_IF" />
+									<PROVIDED-INTERFACE-TREF DEST="/INF2Flash_IF" />
+								</P-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<LATENCY value="2" unit="ms" />
+								</OPERATION>
+								<OPERATION>
+									<WRITE>
+										<IREF DEST="/MAIN_HWIP_Flash/PP_INF2Flash_IF" />
+									</WRITE>
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<TIMING-EVENT>
+									<PERIOD value="50" unit="ms" />
+								</TIMING-EVENT>
+							</EVENT>
+						</INTERNAL-BEHAVIOR>
+					</Generic_Hardware>
+				</Chiplet>
+				<Chiplet>
+					<SHORT-NAME name="Sensor_traffic_generator_Chiplet" />
+					<AXI-BUS />
+					<ETHERNET-INTERFACE />
+					<UCIe-INTERFACE Mode="host" />
+					<Generic_Hardware>
+						<SHORT-NAME name="Sensor_traffic_generator_HWIP" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="10" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<P-PORT-PROTOTYPE>
+									<SHORT-NAME name="PP_INF1SensorIF" />
+									<PROVIDED-INTERFACE-TREF DEST="/INF1SensorIF" />
+								</P-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<WRITE>
+										<IREF DEST="/Sensor_traffic_generator_HWIP/PP_INF1SensorIF" />
+									</WRITE>
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<TIMING-EVENT>
+									<PERIOD value="30" unit="ms" />
+								</TIMING-EVENT>
+							</EVENT>
+						</INTERNAL-BEHAVIOR>
+					</Generic_Hardware>	
+				</Chiplet>
+				<Chiplet>
+					<SHORT-NAME name="AlarmActuator_Chiplet" />
+					<AXI-BUS />
+					<ETHERNET-INTERFACE />
+					<UCIe-INTERFACE Mode="host" />
+					<Generic_Hardware>
+						<SHORT-NAME name="AlarmActuator_HWIP" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="5" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<R-PORT-PROTOTYPE>
+									<SHORT-NAME name="RP_INF3Alarm_IF" />
+									<REQUIRED-INTERFACE-TREF DEST="/INF3Alarm_IF" />
+								</R-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<READ>
+										<IREF DEST="/AlarmActuator_HWIP/RP_INF3Alarm_IF" />
+									</READ>
+								</OPERATION>
+								<OPERATION>
+									<LOAD value="100" />
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<DATA-RECEIVED-EVENT>
+									<REQUIRED-PORT-TREF DEST="/AlarmActuator_HWIP/RP_INF3Alarm_IF" />
+								</DATA-RECEIVED-EVENT>
+							</EVENT>
+						</INTERNAL-BEHAVIOR>
+					</Generic_Hardware>
+				</Chiplet>
+				<Chiplet>
+					<SHORT-NAME name="Flash_Chiplet" />
+					<AXI-BUS />
+					<ETHERNET-INTERFACE />
+					<UCIe-INTERFACE Mode="host" />
+					<Generic_Hardware>
+						<SHORT-NAME name="Flash_HWIP" />
+		                <Frequency value="1000000000"/>
+						<AXI-Master-Port priority="5" />
+						<MEMORY-INTERFACE InternalMemory="true"/>
+						<INTERNAL-BEHAVIOR>
+							<PORTS>
+								<R-PORT-PROTOTYPE>
+									<SHORT-NAME name="RP_INF2Flash_IF" />
+									<REQUIRED-INTERFACE-TREF
+										DEST="/INF2Flash_IF" />
+								</R-PORT-PROTOTYPE>
+							</PORTS>
+							<OPERATIONS-SEQUENCE>
+								<OPERATION>
+									<READ>
+										<IREF DEST="/Flash_HWIP/RP_INF2Flash_IF" />
+									</READ>
+								</OPERATION>
+							</OPERATIONS-SEQUENCE>
+							<EVENT>
+								<DATA-RECEIVED-EVENT>
+									<REQUIRED-PORT-TREF DEST="/Flash_HWIP/RP_INF2Flash_IF" />
+								</DATA-RECEIVED-EVENT>
+							</EVENT>
+						</INTERNAL-BEHAVIOR>
+					</Generic_Hardware>
+				</Chiplet>
+			</SoCs>
+		</ECUs>
+
+		<Analysis>
+			<SW-Analysis-Enable>
+				<ALL-SoCs/>
+			</SW-Analysis-Enable>
+			<HW-Analysis-Enable>
+				<ALL-SoCs/>
+			</HW-Analysis-Enable>
+			<!-- <Power-Analysis-Enable>
+				<ALL-SoCs/>
+			</Power-Analysis-Enable> -->
+			<Network-Analysis-Enable>
+				<CAN-BUS-Monitor-Enable/> 
+				<ETH-Switch-Monitor-Enable/>
+			</Network-Analysis-Enable>
+		</Analysis>
+
+	</ELEMENTS>
+</AR-PACKAGE>

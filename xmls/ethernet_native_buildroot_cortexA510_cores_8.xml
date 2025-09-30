@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+    <ELEMENTS>
+        <!-- <Simulation-Time value="2" unit="us" /> -->
+
+        <ECUs>
+            <SHORT-NAME name="ECU1"/>
+			<SoCs>
+				<SHORT-NAME name="SOC1"/>
+				<AXI-BUS />
+				<ETHERNET-INTERFACE Mode="simulated"/>
+                <UCIe-INTERFACE Mode="host"/>
+				<Chiplet>
+                    <SHORT-NAME name="Chiplet1"/>
+                    <AXI-BUS width="4" frequency="1000000000"/>
+                    <ETHERNET-INTERFACE Mode="native"/>
+					<UCIe-INTERFACE Mode="host"/>
+					<CPU_Cluster>
+						<Operating-System>
+							<Linux Affine-tasks-byOS="false" Show_UART_Terminal="true">
+								<Buildroot_File_System/>
+							</Linux>
+						</Operating-System>
+						<ARMV9-Family>
+							<AFM-CortexA510 CoresPerCluster="8">
+								<SHORT-NAME name="CPU1"/>
+								<Frequency value="1000000000"/>
+							</AFM-CortexA510>
+						</ARMV9-Family>
+					</CPU_Cluster>
+				</Chiplet>
+			</SoCs>
+        </ECUs>
+		<Analysis>
+			<SW-Analysis-Enable>
+				<ALL-SoCs/>
+			</SW-Analysis-Enable>
+			<HW-Analysis-Enable>
+				<ALL-SoCs/>
+			</HW-Analysis-Enable>
+			<Network-Analysis-Enable>
+				<CAN-BUS-Monitor-Enable/> 
+				<ETH-Switch-Monitor-Enable/>
+			</Network-Analysis-Enable>
+		</Analysis>
+    </ELEMENTS>
+</AR-PACKAGE>

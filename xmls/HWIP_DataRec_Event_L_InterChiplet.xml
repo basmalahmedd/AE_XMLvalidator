@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+  <ELEMENTS>
+    <Simulation-Time value="5" unit="s" />
+    
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP_to_Cluster1_0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIP_to_Cluster1_0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP_to_Cluster1_1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIP_to_Cluster1_1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <APPLICATION-SW-COMPONENT-TYPE>
+        <SHORT-NAME name="CPUComponent1"/>
+        <PORTS>
+            <R-PORT-PROTOTYPE>
+                <SHORT-NAME name="HWIP_to_Cluster1_0_Port"/>
+                <REQUIRED-INTERFACE-TREF DEST="/HWIP_to_Cluster1_0_Interface"/>
+            </R-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+                <SHORT-NAME name="HWIP_to_Cluster1_1_Port" />
+                <PROVIDED-INTERFACE-TREF DEST="/HWIP_to_Cluster1_1_Interface" />
+            </P-PORT-PROTOTYPE>
+        </PORTS>
+        <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+                <SHORT-NAME name="CPUBehavior"/>
+                <RUNNABLES>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="R1"/>
+                        <DATA-READ-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="ReadPortVariable0"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/HWIP_to_Cluster1_0_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/HWIP_to_Cluster1_0_Interface/HWIP_to_Cluster1_0_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-READ-ACCESS>                        
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="R2"/>
+                        <DATA-WRITE-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="WritePortVariable0"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/HWIP_to_Cluster1_1_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/HWIP_to_Cluster1_1_Interface/HWIP_to_Cluster1_1_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-WRITE-ACCESS>
+                    </RUNNABLE-ENTITY>
+                </RUNNABLES>
+                <EVENTS>
+                    <TIMING-EVENT>
+                        <SHORT-NAME name="Timing0" />
+                        <START-ON-EVENT-REF DEST="/CPUComponent1/CPUBehavior/R2" />
+                        <PERIOD value="500" unit="ms" />
+                    </TIMING-EVENT>
+                    <DATA-RECEIVED-EVENT>
+                        <SHORT-NAME name="DRE0" />
+                        <START-ON-EVENT-REF DEST="/CPUComponent1/CPUBehavior/R1" />
+                        <DATA-IREF>
+                            <TARGET-DATA-ELEMENT-REF DEST="/CPUComponent1/CPUBehavior/R1/ReadPortVariable0" />
+                        </DATA-IREF>
+                    </DATA-RECEIVED-EVENT>
+                </EVENTS>
+            </SWC-INTERNAL-BEHAVIOR>
+        </INTERNAL-BEHAVIORS>
+    </APPLICATION-SW-COMPONENT-TYPE>
+
+    <ECUs>
+        <SHORT-NAME name="ECU0"/>
+        <SoCs>
+            <SHORT-NAME name="SoC0"/>
+            <AXI-BUS width="4" frequency="100000000"/>
+            <ETHERNET-INTERFACE />
+            <UCIe-INTERFACE Mode="host" />
+            <Chiplet>
+                <SHORT-NAME name="Chiplet1" />
+                <AXI-BUS />
+				<ETHERNET-INTERFACE />
+				<UCIe-INTERFACE Mode="host" />
+                <CPU_Cluster>
+                    <Operating-System>
+                        <Linux>
+                            <Buildroot_File_System/>
+                        </Linux>
+                    </Operating-System>
+                    <ARMV8-Family>
+                        <CortexA53 CoresPerCluster="1">
+                            <SHORT-NAME name="CPUCluster1"/>
+                            <Frequency value="1000000000"/>
+                            <!-- <Core>
+                                <SHORT-NAME name="CPUCore0"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent1/CPUBehavior/R1"    Load="1000" priority="4"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent1/CPUBehavior/R2"    Load="1000" priority="4"/>
+
+                            </Core> -->
+                        </CortexA53>
+                    </ARMV8-Family>
+                    <!-- <POWER-PARAMETERS /> -->
+                </CPU_Cluster>
+            </Chiplet>
+            <Generic_Hardware>
+                <SHORT-NAME name="HWIP0" />
+                <Frequency value="1000000000"/>
+                <AXI-Master-Port priority="1" />
+                <MEMORY-INTERFACE />
+                <INTERNAL-BEHAVIOR>
+                    <PORTS>
+                        <P-PORT-PROTOTYPE>
+                            <SHORT-NAME name="PPORT0" />
+                            <PROVIDED-INTERFACE-TREF DEST="HWIP_to_Cluster1_0_Interface" />
+                        </P-PORT-PROTOTYPE>
+                        <R-PORT-PROTOTYPE>
+                            <SHORT-NAME name="RPORT0" />
+                            <REQUIRED-INTERFACE-TREF DEST="HWIP_to_Cluster1_1_Interface" />
+                        </R-PORT-PROTOTYPE>
+                    </PORTS>
+                    <OPERATIONS-SEQUENCE>
+                        <OPERATION>
+                            <READ>
+                                <IREF DEST="/HWIP0/RPORT0" />
+                            </READ>
+                        </OPERATION>
+                        <OPERATION>
+                            <WRITE>
+                                <IREF DEST="/HWIP0/PPORT0" />
+                            </WRITE>
+                        </OPERATION>
+                        <OPERATION>
+                            <LATENCY value="10" unit="us" />
+                        </OPERATION>
+                    </OPERATIONS-SEQUENCE>
+                    <EVENT>
+                        <DATA-RECEIVED-EVENT>
+                            <REQUIRED-PORT-TREF DEST="/HWIP0/RPORT0" />
+                        </DATA-RECEIVED-EVENT>
+                    </EVENT>
+                </INTERNAL-BEHAVIOR>
+                <!-- <POWER-PARAMETERS /> -->
+            </Generic_Hardware>
+        </SoCs>
+    </ECUs>
+
+    <HW-SW-MAPPING ClusterRef="/ECU0/SoC0/Chiplet1/CPUCluster1">
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent1/CPUBehavior/R1" Load="1000" Priority="4" />
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent1/CPUBehavior/R2" Load="1000" Priority="4" />
+    </HW-SW-MAPPING> 
+    
+    <Analysis>
+      <SW-Analysis-Enable>
+        <ALL-SoCs/>
+      </SW-Analysis-Enable>
+      <HW-Analysis-Enable>
+        <ALL-SoCs/>
+      </HW-Analysis-Enable>
+      <!-- <Power-Analysis-Enable>
+        <ALL-SoCs/>
+      </Power-Analysis-Enable> -->
+      <Network-Analysis-Enable>
+        <CAN-BUS-Monitor-Enable/>
+        <ETH-Switch-Monitor-Enable/>
+      </Network-Analysis-Enable>
+    </Analysis>
+    
+  </ELEMENTS>
+</AR-PACKAGE>

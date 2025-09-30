@@ -1,0 +1,371 @@
+<AR-PACKAGE>
+	<ELEMENTS>
+		<Simulation-Time simtime="1000" />
+		<OS>
+			<Nucleus_RTOS />
+		</OS>
+		<!-- Interface1 between SW1 and SW2 -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface1" ID="Interface1" Buffer-Size="5"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data1" ID="Data1"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated BoundaryRandomValue_Enable="true">
+								<Data-Range min="1" max="100"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<!-- Interface2 between GH1_P and SW2 -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface2" ID="Interface2" Buffer-Size="1"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data2" ID="Data2"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated BoundaryRandomValue_Enable="false">
+								<Data-Range min="1" max="100"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<!-- Interface3 GH1_P -> GH2_N -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface3" ID="Interface3" Buffer-Size="1"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data3" ID="Data3"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated BoundaryRandomValue_Enable="false">
+								<Data-Range min="1" max="100"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<!-- Interface4 between GH2_N -> CortexA72_3 -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface4" ID="Interface4" Buffer-Size="1"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data4" ID="Data4"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated BoundaryRandomValue_Enable="false">
+								<Data-Range min="1" max="100"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<!-- Interface5 between CortexA72_3 -> GH2_N -->
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface5" ID="Interface5" Buffer-Size="1"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data5" ID="Data5"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="100">
+							<Random-Values-generated BoundaryRandomValue_Enable="false">
+								<Data-Range min="1" max="100"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+
+		<APPLICATION-SW-COMPONENT-TYPE>
+			<SHORT-NAME name="SWC1" ID="SWC1"/>
+			<PORTS>
+				<P-PORT-PROTOTYPE>
+					<SHORT-NAME name="PP1" ID="PP1"/>
+					<PROVIDED-INTERFACE-TREF DEST="Interface1"/>
+				</P-PORT-PROTOTYPE>
+			</PORTS>
+			<INTERNAL-BEHAVIORS>
+				<SWC-INTERNAL-BEHAVIOR>
+					<SHORT-NAME name="INTERNAL_BEH1" ID="INTERNAL_BEH1"/>
+					<RUNNABLES>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable1" ID="Runnable1"/>
+							<DATA-WRITE-ACCESSS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="WData1" ID="WData1"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC1/PP1"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface1/Data1"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-WRITE-ACCESSS>
+						</RUNNABLE-ENTITY>
+					</RUNNABLES>
+					<EVENTS>
+						<TIMING-EVENT>
+							<SHORT-NAME name="TimedEvent" ID="TimedEvent"/>
+							<START-ON-EVENT-REF DEST="/SWC1/INTERNAL_BEH1/Runnable1"/>
+							<PERIOD value="0.5"/>
+						</TIMING-EVENT>
+					</EVENTS>
+				</SWC-INTERNAL-BEHAVIOR>
+			</INTERNAL-BEHAVIORS>
+		</APPLICATION-SW-COMPONENT-TYPE>
+		<APPLICATION-SW-COMPONENT-TYPE>
+			<SHORT-NAME name="SWC2" ID="SWC2"/>
+			<PORTS>
+				<R-PORT-PROTOTYPE>
+					<SHORT-NAME name="RP1" ID="RP1"/>
+					<REQUIRED-INTERFACE-TREF DEST="Interface1"/>
+				</R-PORT-PROTOTYPE>
+				<R-PORT-PROTOTYPE>
+					<SHORT-NAME name="RP2" ID="RP2"/>
+					<REQUIRED-INTERFACE-TREF DEST="Interface2"/>
+				</R-PORT-PROTOTYPE>
+			</PORTS>
+			<INTERNAL-BEHAVIORS>
+				<SWC-INTERNAL-BEHAVIOR>
+					<SHORT-NAME name="INTERNAL_BEH2" ID="INTERNAL_BEH2"/>
+					<RUNNABLES>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable2" ID="Runnable2"/>
+							<DATA-READ-ACCESSS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="RData2" ID="RData2"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC2/RP1"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface1/Data1"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-READ-ACCESSS>
+						</RUNNABLE-ENTITY>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable3" ID="Runnable3"/>
+							<DATA-READ-ACCESSS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="RData3" ID="RData3"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC2/RP2"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface2/Data2"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-READ-ACCESSS>
+						</RUNNABLE-ENTITY>
+					</RUNNABLES>
+					<EVENTS>
+						<DATA-RECEIVED-EVENT>
+							<SHORT-NAME name="ReceivedEvent1" ID="ReceivedEvent1"/>
+							<START-ON-EVENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable2"/>
+							<DATA-IREF>
+								<TARGET-DATA-ELEMENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable2/RData2"/>
+							</DATA-IREF>
+						</DATA-RECEIVED-EVENT>
+						<DATA-RECEIVED-EVENT>
+							<SHORT-NAME name="ReceivedEvent2" ID="ReceivedEvent2"/>
+							<START-ON-EVENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable3"/>
+							<DATA-IREF>
+								<TARGET-DATA-ELEMENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable3/RData3"/>
+							</DATA-IREF>
+						</DATA-RECEIVED-EVENT>
+					</EVENTS>
+				</SWC-INTERNAL-BEHAVIOR>
+			</INTERNAL-BEHAVIORS>
+		</APPLICATION-SW-COMPONENT-TYPE>
+		<APPLICATION-SW-COMPONENT-TYPE>
+			<SHORT-NAME name="SWC3" ID="SWC3"/>
+			<PORTS>
+				<P-PORT-PROTOTYPE>
+					<SHORT-NAME name="PP3" ID="PP3"/>
+					<PROVIDED-INTERFACE-TREF DEST="Interface5"/>
+				</P-PORT-PROTOTYPE>
+				<R-PORT-PROTOTYPE>
+					<SHORT-NAME name="RP3" ID="RP3"/>
+					<REQUIRED-INTERFACE-TREF DEST="Interface4"/>
+				</R-PORT-PROTOTYPE>
+			</PORTS>
+			<INTERNAL-BEHAVIORS>
+				<SWC-INTERNAL-BEHAVIOR>
+					<SHORT-NAME name="INTERNAL_BEH3" ID="INTERNAL_BEH3"/>
+					<RUNNABLES>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable4" ID="Runnable4"/>
+							<DATA-READ-ACCESSS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="RData4" ID="RData4"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC3/RP3"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface4/Data4"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-READ-ACCESSS>
+							<DATA-WRITE-ACCESSS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="WData5" ID="WData5"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC3/PP3"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface5/Data5"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-WRITE-ACCESSS>
+						</RUNNABLE-ENTITY>
+					</RUNNABLES>
+					<EVENTS>
+						<DATA-RECEIVED-EVENT>
+							<SHORT-NAME name="ReceivedEvent3" ID="ReceivedEvent3"/>
+							<START-ON-EVENT-REF DEST="/SWC3/INTERNAL_BEH3/Runnable4"/>
+							<DATA-IREF>
+								<TARGET-DATA-ELEMENT-REF DEST="/SWC3/INTERNAL_BEH3/Runnable4/RData4"/>
+							</DATA-IREF>
+						</DATA-RECEIVED-EVENT>
+					</EVENTS>
+				</SWC-INTERNAL-BEHAVIOR>
+			</INTERNAL-BEHAVIORS>
+		</APPLICATION-SW-COMPONENT-TYPE>
+
+		<!--
+			Chiplet1 has CortexA72_1
+			Chiplet2 has CortexA72_2 and GH1_P
+			Chiplet3 has GH2_N
+			outside Chiplets there is CortexA72_3
+			Communications:
+				interface5: CortexA72_3 -> GH2_N (outside -> chiplet)
+				interface1: CortexA72_1 -> CortexA72_2 (different chiplets Communications)
+				interface3: GH1_P -> GH2_N (different chiplets Communications)
+				interface4: GH2_N -> CortexA72_3 (chiplet -> outside)
+				interface2: GH1_P -> CortexA72_2 (inner chiplet Communications)
+		-->
+		<ECUs>
+			<SHORT-NAME name="ECU1" ID="ECU1"/>
+			<SoCs>
+				<SHORT-NAME name="SoC1" ID="SoC1"/>
+				<Chiplet>
+					<SHORT-NAME name="Chiplet1" ID="Chiplet1"/>
+					<CPU_Cluster>
+						<ARMV7-Family>
+							<CortexM7>
+								<SHORT-NAME name="CortexM7_1" ID="CortexM7_1"/>
+								<Frequency name="1000000000"/>
+								<Core>
+									<SHORT-NAME name="Core1" ID="Core1"/>
+									<Core-runnable-Mapping DEST="/SWC1/INTERNAL_BEH1/Runnable1" Load="100" priority="8" />
+								</Core>
+							</CortexM7>
+						</ARMV7-Family>
+					</CPU_Cluster>
+				</Chiplet>
+				<Chiplet>
+					<SHORT-NAME name="Chiplet2" ID="Chiplet2"/>
+					<CPU_Cluster>
+						<ARMV8-Family>
+							<CortexR52>
+								<SHORT-NAME name="CortexR52_1" ID="CortexR52_1"/>
+								<Frequency name="1000000000"/>
+								<Core>
+									<SHORT-NAME name="Core2" ID="Core2"/>
+									<Core-runnable-Mapping DEST="/SWC2/INTERNAL_BEH2/Runnable2" Load="100" priority="8" />
+									<Core-runnable-Mapping DEST="/SWC2/INTERNAL_BEH2/Runnable3" Load="100" priority="9" />
+									<Core-ISR-Mapping DEST="/ECU1/SoC1/Chiplet2/GH1_P" />
+								</Core>
+							</CortexR52>
+						</ARMV8-Family>
+					</CPU_Cluster>
+					<Generic_Hardware>
+						<SHORT-NAME name="GH1_P" ID="GH1_P" />
+						<AXI-Master-Port priority="1" />
+						<INTERNAL-BEHAVIOR>
+							<Producer>
+								<PORTS>
+									<P-PORT-PROTOTYPE>
+										<SHORT-NAME name="GH1_PP1" ID="GH1_PP1" />
+										<PROVIDED-INTERFACE-TREF DEST="/Interface2/Data2" />
+									</P-PORT-PROTOTYPE>
+									<P-PORT-PROTOTYPE>
+										<SHORT-NAME name="GH1_PP2" ID="GH1_PP2" />
+										<PROVIDED-INTERFACE-TREF DEST="/Interface3/Data3" />
+									</P-PORT-PROTOTYPE>
+								</PORTS>
+								<LATENCY ProcessLatency="1000000" WriteLatency="0" />
+							</Producer>
+						</INTERNAL-BEHAVIOR>
+						<TRIGGER>
+							<TIME-BASED>
+								<PERIOD value="2" />
+							</TIME-BASED>
+						</TRIGGER>
+					</Generic_Hardware>
+				</Chiplet>
+				<Chiplet>	
+					<SHORT-NAME name="Chiplet3" ID="Chiplet3"/>
+					<Generic_Hardware>
+						<SHORT-NAME name="GH2_N" ID="GH2_N" />
+						<AXI-Master-Port priority="2" />
+						<INTERNAL-BEHAVIOR>
+							<Normal>
+								<PORTS>
+									<P-PORT-PROTOTYPE>
+										<SHORT-NAME name="GH2_PP1" ID="GH2_PP1" />
+										<PROVIDED-INTERFACE-TREF DEST="/Interface4/Data4" />
+									</P-PORT-PROTOTYPE>
+									<R-PORT-PROTOTYPE>
+										<SHORT-NAME name="GH2_RP1" ID="GH2_RP1" />
+										<REQUIRED-INTERFACE-TREF DEST="/Interface3/Data3" />
+									</R-PORT-PROTOTYPE>
+									<R-PORT-PROTOTYPE>
+										<SHORT-NAME name="GH2_RP2" ID="GH2_RP2" />
+										<REQUIRED-INTERFACE-TREF DEST="/Interface5/Data5" />
+									</R-PORT-PROTOTYPE>
+								</PORTS>
+								<LATENCY ReadLatency="2000" ProcessLatency="6000" WriteLatency="2000" />
+							</Normal>
+						</INTERNAL-BEHAVIOR>
+						<TRIGGER>
+							<TIME-BASED>
+								<PERIOD value="4" />
+							</TIME-BASED>
+						</TRIGGER>
+					</Generic_Hardware>
+				</Chiplet>
+				<CPU_Cluster>
+					<ARMV8-Family>
+						<CortexA72>
+							<SHORT-NAME name="CortexA72_3" ID="CortexA72_3"/>
+							<Frequency name="1000000000"/>
+							<Core>
+								<SHORT-NAME name="Core3" ID="Core3"/>
+								<Core-runnable-Mapping DEST="/SWC3/INTERNAL_BEH3/Runnable4" Load="100" priority="8" />
+								<Core-ISR-Mapping DEST="/ECU1/SoC1/Chiplet3/GH2_N" />
+							</Core>
+						</CortexA72>
+					</ARMV8-Family>
+				</CPU_Cluster>
+			</SoCs>
+		</ECUs>
+		<Analysis>
+			<Analysis-Enable>
+				<ALL-ECUs Enable="true">
+					<Analysis-output-directory Dir-Location=" "/>
+					<Analyze_all_Sim_Time></Analyze_all_Sim_Time>
+				</ALL-ECUs>
+			</Analysis-Enable>
+		</Analysis>
+	</ELEMENTS>
+</AR-PACKAGE>

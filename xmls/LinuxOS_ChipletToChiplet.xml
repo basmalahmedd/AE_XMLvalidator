@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+  <ELEMENTS>
+    <Simulation-Time value="5" unit="s" />
+    
+    <!-- Chiplet/Cluster1 to SoC/Cluster0 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="Cluster1_to_Cluster0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="Cluster1_to_Cluster0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="256">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="255"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+    
+    <!-- SoC/Cluster0 to Chiplet/Cluster1 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="Cluster0_to_Cluster1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="Cluster0_to_Cluster1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="257">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="255"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- Chiplet/Cluster1 to SoC/HWIP0 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="Cluster1_to_HWIP0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="Cluster1_to_HWIP0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="258">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- SoC/HWIP0 to Chiplet/Cluster1 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP0_to_Cluster1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIP0_to_Cluster1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="259">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- Chiplet/HWIP1 to SoC/Cluster0 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP1_to_Cluster0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIP1_to_Cluster0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="260">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- SoC/Cluster0 to Chiplet/HWIP1 -->
+    <!-- <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="Cluster0_to_HWIP1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="Cluster0_to_HWIP1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="261">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE> -->
+
+    <!-- Chiplet/HWIP1 to SoC/HWIP0 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP1_to_HWIP0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+            <SHORT-NAME name="HWIP1_to_HWIP0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="262">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- SoC/HWIP0 to Chiplet/HWIP1 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIP0_to_HWIP1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIP0_to_HWIP1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="263">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+
+    <APPLICATION-SW-COMPONENT-TYPE>
+        <SHORT-NAME name="CPUComponent0"/>
+        <PORTS>
+            <R-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster1_to_Cluster0_Port"/>
+                <REQUIRED-INTERFACE-TREF DEST="/Cluster1_to_Cluster0_Interface"/>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+                <SHORT-NAME name="HWIP1_to_Cluster0_Port"/>
+                <REQUIRED-INTERFACE-TREF DEST="/HWIP1_to_Cluster0_Interface"/>
+            </R-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster0_to_Cluster1_Port"/>
+                <PROVIDED-INTERFACE-TREF DEST="/Cluster0_to_Cluster1_Interface"/>
+            </P-PORT-PROTOTYPE>
+            <!-- <P-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster0_to_HWIP1_Port"/>
+                <PROVIDED-INTERFACE-TREF DEST="/Cluster0_to_HWIP1_Interface"/>
+            </P-PORT-PROTOTYPE> -->
+        </PORTS>
+        <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+                <SHORT-NAME name="CPUBehavior"/>
+                <RUNNABLES>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="Runnable_HandlingCluster1Events"/>
+                        <DATA-WRITE-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="WritePortVariable"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent0/Cluster0_to_Cluster1_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster0_to_Cluster1_Interface/Cluster0_to_Cluster1_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-WRITE-ACCESS>
+                        <DATA-READ-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="ReadPortVariable"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent0/Cluster1_to_Cluster0_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster1_to_Cluster0_Interface/Cluster1_to_Cluster0_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-READ-ACCESS>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="Runnable_HandlingHWIP1Events"/>
+                        <!-- <DATA-WRITE-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="WritePortVariable"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent0/Cluster0_to_HWIP1_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster0_to_HWIP1_Interface/Cluster0_to_HWIP1_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-WRITE-ACCESS> -->
+                        <DATA-READ-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="ReadPortVariable"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent0/HWIP1_to_Cluster0_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/HWIP1_to_Cluster0_Interface/HWIP1_to_Cluster0_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-READ-ACCESS>
+                    </RUNNABLE-ENTITY>
+                </RUNNABLES>
+                <EVENTS>
+                    <DATA-RECEIVED-EVENT>
+                        <SHORT-NAME name="DataReceivedEvent1"/>
+                        <START-ON-EVENT-REF DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingCluster1Events"/>
+                        <DATA-IREF>
+                            <TARGET-DATA-ELEMENT-REF DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingCluster1Events/ReadPortVariable"/>
+                        </DATA-IREF>
+                    </DATA-RECEIVED-EVENT>
+                    <DATA-RECEIVED-EVENT>
+                        <SHORT-NAME name="DataReceivedEvent2"/>
+                        <START-ON-EVENT-REF DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingHWIP1Events"/>
+                        <DATA-IREF>
+                            <TARGET-DATA-ELEMENT-REF DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingHWIP1Events/ReadPortVariable"/>
+                        </DATA-IREF>
+                    </DATA-RECEIVED-EVENT>
+                </EVENTS>
+            </SWC-INTERNAL-BEHAVIOR>
+        </INTERNAL-BEHAVIORS>
+    </APPLICATION-SW-COMPONENT-TYPE>
+    
+    <APPLICATION-SW-COMPONENT-TYPE>
+        <SHORT-NAME name="CPUComponent1"/>
+        <PORTS>
+            <R-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster0_to_Cluster1_Port"/>
+                <REQUIRED-INTERFACE-TREF DEST="/Cluster0_to_Cluster1_Interface"/>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+                <SHORT-NAME name="HWIP0_to_Cluster1_Port"/>
+                <REQUIRED-INTERFACE-TREF DEST="/HWIP0_to_Cluster1_Interface"/>
+            </R-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster1_to_Cluster0_Port"/>
+                <PROVIDED-INTERFACE-TREF DEST="/Cluster1_to_Cluster0_Interface"/>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+                <SHORT-NAME name="Cluster1_to_HWIP0_Port"/>
+                <PROVIDED-INTERFACE-TREF DEST="/Cluster1_to_HWIP0_Interface"/>
+            </P-PORT-PROTOTYPE>
+        </PORTS>
+        <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+                <SHORT-NAME name="CPUBehavior"/>
+                <RUNNABLES>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="Runnable_HandlingCluster0Events"/>
+                        <DATA-WRITE-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="WritePortVariable1"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/Cluster1_to_HWIP0_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster1_to_HWIP0_Interface/Cluster1_to_HWIP0_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-WRITE-ACCESS>
+                        <DATA-READ-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="ReadPortVariable1"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/Cluster0_to_Cluster1_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster0_to_Cluster1_Interface/Cluster0_to_Cluster1_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-READ-ACCESS>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                        <SHORT-NAME name="Runnable_HandlingHWIP0Events"/>
+                        <DATA-WRITE-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="WritePortVariable2"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/Cluster1_to_Cluster0_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/Cluster1_to_Cluster0_Interface/Cluster1_to_Cluster0_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-WRITE-ACCESS>
+                        <DATA-READ-ACCESS>
+                            <VARIABLE-ACCESS>
+                                <SHORT-NAME name="ReadPortVariable2"/>
+                                <ACCESSED-VARIABLE>
+                                    <AUTOSAR-VARIABLE-IREF>
+                                        <PORT-PROTOTYPE-REF DEST="/CPUComponent1/HWIP0_to_Cluster1_Port"/>
+                                        <TARGET-DATA-PROTOTYPE-REF DEST="/HWIP0_to_Cluster1_Interface/HWIP0_to_Cluster1_Variable"/>
+                                    </AUTOSAR-VARIABLE-IREF>
+                                </ACCESSED-VARIABLE>
+                            </VARIABLE-ACCESS>
+                        </DATA-READ-ACCESS>
+                    </RUNNABLE-ENTITY>
+                </RUNNABLES>
+                <EVENTS>
+                    <DATA-RECEIVED-EVENT>
+                        <SHORT-NAME name="DataReceivedEvent1"/>
+                        <START-ON-EVENT-REF DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingCluster0Events"/>
+                        <DATA-IREF>
+                            <TARGET-DATA-ELEMENT-REF DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingCluster0Events/ReadPortVariable1"/>
+                        </DATA-IREF>
+                    </DATA-RECEIVED-EVENT>
+                    <DATA-RECEIVED-EVENT>
+                        <SHORT-NAME name="DataReceivedEvent2"/>
+                        <START-ON-EVENT-REF DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingHWIP0Events"/>
+                        <DATA-IREF>
+                            <TARGET-DATA-ELEMENT-REF DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingHWIP0Events/ReadPortVariable2"/>
+                        </DATA-IREF>
+                    </DATA-RECEIVED-EVENT>
+                </EVENTS>
+            </SWC-INTERNAL-BEHAVIOR>
+        </INTERNAL-BEHAVIORS>
+    </APPLICATION-SW-COMPONENT-TYPE>
+
+    <ECUs>
+        <SHORT-NAME name="ECU0"/>
+        <SoCs>
+            <SHORT-NAME name="SoC0"/>
+            <AXI-BUS width="4" frequency="100000000"/>
+            <ETHERNET-INTERFACE />
+            <UCIe-INTERFACE Mode="host" />
+            <Chiplet>
+                <SHORT-NAME name="Chiplet0"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+                <ETHERNET-INTERFACE />
+                <UCIe-INTERFACE Mode="host" />
+                <CPU_Cluster>
+                    <Operating-System>
+                        <Linux>
+                            <Buildroot_File_System/>
+                        </Linux>
+                    </Operating-System>
+                    <ARMV8-Family>
+                        <CortexA53 CoresPerCluster="1">
+                            <SHORT-NAME name="CPUCluster0"/>
+                            <Frequency value="1000000000"/>
+                            <!-- <Core>
+                                <SHORT-NAME name="CPUCore0"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingCluster1Events" Load="1000" priority="4"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent0/CPUBehavior/Runnable_HandlingHWIP1Events" Load="1000" priority="4"/>
+                            </Core> -->
+                        </CortexA53>
+                    </ARMV8-Family>
+                    <!-- <POWER-PARAMETERS /> -->
+                </CPU_Cluster>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HIWP0" />
+                    <Frequency value="1000000000"/>
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP0_to_Cluster1_Port" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIP0_to_Cluster1_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP0_to_HWIP1_Port" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIP0_to_HWIP1_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="Cluster1_to_HWIP0_Port" />
+                                <REQUIRED-INTERFACE-TREF DEST="Cluster1_to_HWIP0_Interface" />
+                            </R-PORT-PROTOTYPE>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP1_to_HWIP0_Port" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIP1_to_HWIP0_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HIWP0/HWIP0_to_Cluster1_Port" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HIWP0/HWIP0_to_HWIP1_Port" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HIWP0/Cluster1_to_HWIP0_Port" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HIWP0/HWIP1_to_HWIP0_Port" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <TIMING-EVENT>
+                                <PERIOD value="500" unit="ms" />
+                            </TIMING-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+            </Chiplet>
+
+            <Chiplet>
+                <SHORT-NAME name="Chiplet1"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+                <ETHERNET-INTERFACE />
+                <UCIe-INTERFACE Mode="host" />
+                <CPU_Cluster>
+                    <Operating-System>
+                        <Nucleus_RTOS/>
+                    </Operating-System>
+                    <ARMV8-Family>
+                        <CortexA53 CoresPerCluster="1">
+                            <SHORT-NAME name="CPUCluster1"/>
+                            <Frequency value="1000000000"/>
+                            <!-- <Core>
+                                <SHORT-NAME name="CPUCore0"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingCluster0Events" Load="1000" priority="4"/>
+                                <Core-runnable-Mapping DEST="/CPUComponent1/CPUBehavior/Runnable_HandlingHWIP0Events"    Load="1000" priority="4"/>
+                            </Core> -->
+                        </CortexA53>
+                    </ARMV8-Family>
+                    <!-- <POWER-PARAMETERS /> -->
+                </CPU_Cluster>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP1" />
+                    <Frequency value="1000000000"/>
+                    <AXI-Master-Port priority="10" />
+                    <MEMORY-INTERFACE InternalMemory="false" />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP1_to_Cluster0_Port" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIP1_to_Cluster0_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP1_to_HWIP0_Port" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIP1_to_HWIP0_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <!-- <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="Cluster0_to_HWIP1_Port" />
+                                <REQUIRED-INTERFACE-TREF DEST="Cluster0_to_HWIP1_Interface" />
+                            </R-PORT-PROTOTYPE> -->
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="HWIP0_to_HWIP1_Port" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIP0_to_HWIP1_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIP1/HWIP1_to_Cluster0_Port" />
+                                </WRITE>
+                            </OPERATION>
+                            <!-- <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP1/Cluster0_to_HWIP1_Port" />
+                                </READ>
+                            </OPERATION> -->
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIP1/HWIP1_to_HWIP0_Port" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP1/HWIP0_to_HWIP1_Port" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP1/HWIP0_to_HWIP1_Port" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+            </Chiplet>
+
+
+        </SoCs>
+    </ECUs>
+
+    <HW-SW-MAPPING ClusterRef="/ECU0/SoC0/Chiplet0/CPUCluster0">
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent0/CPUBehavior/Runnable_HandlingCluster1Events" Load="1000" Priority="4"/>
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent0/CPUBehavior/Runnable_HandlingHWIP1Events" Load="1000" Priority="4"/>
+    </HW-SW-MAPPING> 
+
+    <HW-SW-MAPPING ClusterRef="/ECU0/SoC0/Chiplet1/CPUCluster1">
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent1/CPUBehavior/Runnable_HandlingCluster0Events" Load="1000" Priority="4"/>
+        <Core-Runnable-Mapping CoreId="0" RunnableRef="/CPUComponent1/CPUBehavior/Runnable_HandlingHWIP0Events"    Load="1000" Priority="4"/>
+    </HW-SW-MAPPING> 
+
+    <Analysis>
+      <SW-Analysis-Enable>
+        <ALL-SoCs/>
+      </SW-Analysis-Enable>
+      <HW-Analysis-Enable>
+        <ALL-SoCs/>
+      </HW-Analysis-Enable>
+      <!-- <Power-Analysis-Enable>
+        <ALL-SoCs/>
+      </Power-Analysis-Enable> -->
+      <Network-Analysis-Enable>
+        <CAN-BUS-Monitor-Enable/>
+        <ETH-Switch-Monitor-Enable/>
+      </Network-Analysis-Enable>
+    </Analysis>
+     
+  </ELEMENTS>
+</AR-PACKAGE>

@@ -1,0 +1,5 @@
+pydantic
+xmlschema
+lxml
+pytest
+langchain

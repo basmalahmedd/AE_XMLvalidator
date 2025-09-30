@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+  <ELEMENTS>
+    <Simulation-Time value="10000" unit="ms" />
+    
+    <!-- HWIPn to HWIP0 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP0_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP0_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP1 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP1_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP1_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP2 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP2_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP2_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP3 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP3_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP3_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP4 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP4_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP4_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP5 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP5_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP5_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP6 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP6_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP6_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP7 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP7_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP7_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP8 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP8_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP8_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP9 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP9_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP9_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP10 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP10_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP10_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP11 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP11_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP11_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP12 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP12_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP12_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP13 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP13_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP13_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP14 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP14_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP14_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <!-- HWIPn to HWIP15 -->
+    <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="HWIPn_to_HWIP15_Interface"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="HWIPn_to_HWIP15_Variable"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="200">
+                        <Random-Values-generated>
+                            <Data-Range min="0" max="60"/>
+                        </Random-Values-generated>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+
+    <ECUs>
+        <SHORT-NAME name="ECU0"/>
+        <SoCs>
+            <SHORT-NAME name="SoC0"/>
+            <AXI-BUS width="4" frequency="100000000"/>
+            <Chiplet>
+                <SHORT-NAME name="Chiplet0"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIPn" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT0" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP0_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT1" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP1_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT2" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP2_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT3" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP3_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT4" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP4_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT5" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP5_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT6" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP6_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT7" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP7_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT8" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP8_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT9" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP9_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT10" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP10_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT11" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP11_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT12" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP12_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT13" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP13_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT14" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP14_Interface" />
+                            </P-PORT-PROTOTYPE>
+                            <P-PORT-PROTOTYPE>
+                                <SHORT-NAME name="PPORT15" />
+                                <PROVIDED-INTERFACE-TREF DEST="HWIPn_to_HWIP15_Interface" />
+                            </P-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT0" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT1" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT2" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT3" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT4" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT5" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT6" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT7" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT8" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT9" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT10" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT11" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT12" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT13" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT14" />
+                                </WRITE>
+                            </OPERATION>
+                            <OPERATION>
+                                <WRITE>
+                                    <IREF DEST="/HWIPn/PPORT15" />
+                                </WRITE>
+                            </OPERATION>
+
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <TIMING-EVENT>
+                                <PERIOD value="1" unit="s" />
+                            </TIMING-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP0" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP0_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP0/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP0/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP1" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP1_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP1/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP1/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP2" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP2_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP2/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP2/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP3" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP3_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP3/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP3/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+            </Chiplet>
+
+            <Chiplet>
+                <SHORT-NAME name="Chiplet1"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP4" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP4_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP4/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP4/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP5" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP5_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP5/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP5/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP6" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP6_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP6/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP6/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP7" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP7_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP7/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP7/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+
+            </Chiplet>
+            
+            <Chiplet>
+                <SHORT-NAME name="Chiplet2"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP8" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP8_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP8/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP8/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP9" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP9_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP9/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP9/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP10" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP10_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP10/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP10/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP11" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP11_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP11/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP11/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+
+            </Chiplet>
+
+            <Chiplet>
+                <SHORT-NAME name="Chiplet3"/>
+                <AXI-BUS width="4" frequency="100000000"/>
+
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP12" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP12_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP12/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP12/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP13" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP13_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP13/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP13/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP14" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP14_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP14/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP14/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+                <Generic_Hardware>
+                    <SHORT-NAME name="HWIP15" />
+                    <Frequency value="1000000000" />
+                    <AXI-Master-Port priority="1" />
+                    <MEMORY-INTERFACE />
+                    <INTERNAL-BEHAVIOR>
+                        <PORTS>
+                            <R-PORT-PROTOTYPE>
+                                <SHORT-NAME name="RPORT" />
+                                <REQUIRED-INTERFACE-TREF DEST="HWIPn_to_HWIP15_Interface" />
+                            </R-PORT-PROTOTYPE>
+                        </PORTS>
+                        <OPERATIONS-SEQUENCE>
+                            <OPERATION>
+                                <READ>
+                                    <IREF DEST="/HWIP15/RPORT" />
+                                </READ>
+                            </OPERATION>
+                            <OPERATION>
+                                <LATENCY value="10" unit="us" />
+                            </OPERATION>
+                        </OPERATIONS-SEQUENCE>
+                        <EVENT>
+                            <DATA-RECEIVED-EVENT>
+                                <REQUIRED-PORT-TREF DEST="/HWIP15/RPORT" />
+                            </DATA-RECEIVED-EVENT>
+                        </EVENT>
+                    </INTERNAL-BEHAVIOR>
+                    <!-- <POWER-PARAMETERS /> -->
+                </Generic_Hardware>
+
+            </Chiplet>
+        </SoCs>
+    </ECUs>
+    
+    <Analysis>
+      <SW-Analysis-Enable>
+        <ALL-SoCs/>
+      </SW-Analysis-Enable>
+      <HW-Analysis-Enable>
+        <ALL-SoCs/>
+      </HW-Analysis-Enable>
+      <!-- <Power-Analysis-Enable>
+        <ALL-SoCs/>
+      </Power-Analysis-Enable> -->
+      <Network-Analysis-Enable>
+        <CAN-BUS-Monitor-Enable/>
+        <ETH-Switch-Monitor-Enable/>
+      </Network-Analysis-Enable>
+    </Analysis>
+    
+  </ELEMENTS>
+</AR-PACKAGE>

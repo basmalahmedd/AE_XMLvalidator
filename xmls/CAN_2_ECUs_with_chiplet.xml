@@ -1,0 +1,148 @@
+<AR-PACKAGE
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="S2S_Ae_XSD_schema.xsd">
+
+	<ELEMENTS>
+        <Simulation-Time simtime="1000"/>
+		<OS>
+			<Nucleus_RTOS />
+		</OS>
+
+        <SENDER-RECEIVER-INTERFACE>
+        <SHORT-NAME name="SRI1" ID="SRI1" Buffer-Size="10"/>
+        <DATA-ELEMENTS>
+            <VARIABLE-DATA-PROTOTYPE>
+                <SHORT-NAME name="CAN_data" ID="data1"/>
+                <TYPE-TREF>
+                    <Array-of-uint8 No_Of_Bytes="61">
+                        <Fixed-values-generated Default-Value="100"/>
+                    </Array-of-uint8>
+                </TYPE-TREF>
+            </VARIABLE-DATA-PROTOTYPE>
+        </DATA-ELEMENTS>
+    </SENDER-RECEIVER-INTERFACE>
+        <APPLICATION-SW-COMPONENT-TYPE>
+            <SHORT-NAME name="CAN_SWC" ID="SWC1"/>
+            <PORTS>
+                <P-PORT-PROTOTYPE>
+                    <SHORT-NAME name="PP" ID="PP_1"/>
+                    <PROVIDED-INTERFACE-TREF DEST="/SRI1/CAN_data"/>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE>
+                    <SHORT-NAME name="RP" ID="RP_1"/>
+                    <REQUIRED-INTERFACE-TREF DEST="/SRI1/CAN_data"/>
+                </R-PORT-PROTOTYPE>
+            </PORTS>
+
+            <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR>
+                    <SHORT-NAME name="CAN_SWC_IntBehaviour" ID="IntBeha_1"/>
+                    <RUNNABLES>
+                        <RUNNABLE-ENTITY>
+                            <SHORT-NAME name="R1_TxCAN" ID="R1"/>
+                            <DATA-WRITE-ACCESSS>
+                                <VARIABLE-ACCESS>
+                                    <SHORT-NAME name="TxCAN" ID="TxCAN1"/>
+                                    <ACCESSED-VARIABLE>
+                                        <AUTOSAR-VARIABLE-IREF>
+                                            <PORT-PROTOTYPE-REF DEST="/CAN_SWC/PP"/>
+                                            <TARGET-DATA-PROTOTYPE-REF DEST="/SRI1/CAN_data"/>
+                                        </AUTOSAR-VARIABLE-IREF>
+                                    </ACCESSED-VARIABLE>
+                                </VARIABLE-ACCESS>
+                            </DATA-WRITE-ACCESSS>
+                        </RUNNABLE-ENTITY>
+                        <RUNNABLE-ENTITY>
+                            <SHORT-NAME name="R2_RxCAN" ID="R2"/>
+                            <DATA-READ-ACCESSS>
+                                <VARIABLE-ACCESS>
+                                    <SHORT-NAME name="RxCAN" ID="R2"/>
+                                    <ACCESSED-VARIABLE>
+                                        <AUTOSAR-VARIABLE-IREF>
+                                            <PORT-PROTOTYPE-REF DEST="/CAN_SWC/RP"/>
+                                            <TARGET-DATA-PROTOTYPE-REF DEST="/SRI1/CAN_data"/>
+                                        </AUTOSAR-VARIABLE-IREF>
+                                    </ACCESSED-VARIABLE>
+                                </VARIABLE-ACCESS>
+                            </DATA-READ-ACCESSS>
+                        </RUNNABLE-ENTITY>
+
+                    </RUNNABLES>
+                    <EVENTS>
+                        <TIMING-EVENT>
+                            <SHORT-NAME name="T500ms" ID="T500ms"/>
+                            <START-ON-EVENT-REF DEST="/CAN_SWC/CAN_SWC_IntBehaviour/R1_TxCAN"/>
+                            <PERIOD value="0.5"/>
+                        </TIMING-EVENT>
+                        <DATA-RECEIVED-EVENT>
+                            <SHORT-NAME name="DRE" ID="DRE_1"/>
+                            <START-ON-EVENT-REF DEST="/CAN_SWC/CAN_SWC_IntBehaviour/R2_RxCAN"/>
+                            <DATA-IREF>
+                                <TARGET-DATA-ELEMENT-REF DEST="/CAN_SWC/CAN_SWC_IntBehaviour/R2_RxCAN/RxCAN"/>
+                            </DATA-IREF>
+                        </DATA-RECEIVED-EVENT>
+                    </EVENTS>
+                </SWC-INTERNAL-BEHAVIOR>
+            </INTERNAL-BEHAVIORS>
+        </APPLICATION-SW-COMPONENT-TYPE>
+        <Network-Topology>
+            <CAN-BUS>
+                <SHORT-NAME name="CAN1" ID="CAN1"/>
+                <CANBus-INTERFACE-TREF DEST="/SRI1" BaudRate="100000"/>
+            </CAN-BUS>
+        </Network-Topology>
+        <ECUs>
+            <SHORT-NAME name="ECU1" ID="ECU1"  />
+            <SoCs>
+                <SHORT-NAME name="SoC1" ID="SoC1"  />
+				<Chiplet>
+					<SHORT-NAME name="Chiplet1" ID="Chiplet1"  />				
+					<CPU_Cluster >
+						<ARMV8-Family>
+							<CortexA57 >
+								<SHORT-NAME name="CortexA57_SingleCore" ID="CortexA57_SingleCore" />
+								<Frequency name="1000000000" />
+								<Core>
+									<SHORT-NAME name="A57Core0" ID="A57Core0" />
+									<Core-runnable-Mapping priority="7" Load="100"
+										DEST="/CAN_SWC/CAN_SWC_IntBehaviour/R1_TxCAN"  />
+								</Core>
+							</CortexA57>
+						</ARMV8-Family>
+					</CPU_Cluster>
+				</Chiplet>
+            </SoCs>
+		</ECUs>
+        <ECUs>
+            <SHORT-NAME name="ECU2" ID="ECU2"  />
+            <SoCs>
+                <SHORT-NAME name="SoC2" ID="SoC2"  />
+				<Chiplet>
+					<SHORT-NAME name="Chiplet1" ID="Chiplet1"  />				
+					<CPU_Cluster >
+						<ARMV8-Family>
+							<CortexA72 >
+								<SHORT-NAME name="CortexA72_SingleCore" ID="CortexA72_SingleCore" />
+								<Frequency name="1000000000" />
+								 <Core>
+									<SHORT-NAME name="A72Core0" ID="A72Core0" />
+									<Core-runnable-Mapping priority="7" Load="100"
+										DEST="/CAN_SWC/CAN_SWC_IntBehaviour/R2_RxCAN"  />
+								</Core>
+							</CortexA72>
+						</ARMV8-Family>
+					</CPU_Cluster>
+				</Chiplet>
+            </SoCs>
+		</ECUs>
+
+        <Analysis>
+             <Analysis-Enable>
+                 <ALL-ECUs Enable="true">
+                     <Analysis-output-directory Dir-Location=""/>
+					<Analyze_all_Sim_Time></Analyze_all_Sim_Time>
+                 </ALL-ECUs>
+             </Analysis-Enable>
+        </Analysis>         
+    </ELEMENTS>
+</AR-PACKAGE>

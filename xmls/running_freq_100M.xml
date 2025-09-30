@@ -1,0 +1,180 @@
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+	<ELEMENTS>
+		<Simulation-Time value="20000" unit="ms" />
+		<SENDER-RECEIVER-INTERFACE>
+			<SHORT-NAME name="Interface1"/>
+			<DATA-ELEMENTS>
+				<VARIABLE-DATA-PROTOTYPE>
+					<SHORT-NAME name="Data1"/>
+					<TYPE-TREF>
+						<Array-of-uint8 No_Of_Bytes="61">
+							<Random-Values-generated >
+								<Data-Range min="1" max="60"/>
+							</Random-Values-generated>
+						</Array-of-uint8>
+					</TYPE-TREF>
+				</VARIABLE-DATA-PROTOTYPE>
+			</DATA-ELEMENTS>
+		</SENDER-RECEIVER-INTERFACE>
+		<APPLICATION-SW-COMPONENT-TYPE>
+			<SHORT-NAME name="SWC1" />
+			<PORTS>
+				<P-PORT-PROTOTYPE>
+					<SHORT-NAME name="PP1" />
+					<PROVIDED-INTERFACE-TREF DEST="Interface1"/>
+				</P-PORT-PROTOTYPE>
+			</PORTS>
+			<INTERNAL-BEHAVIORS>
+				<SWC-INTERNAL-BEHAVIOR>
+					<SHORT-NAME name="INTERNAL_BEH1"/>
+					<RUNNABLES>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable1" />
+							<DATA-WRITE-ACCESS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="WData1"/>
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC1/PP1"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface1/Data1"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-WRITE-ACCESS>
+						</RUNNABLE-ENTITY>
+					</RUNNABLES>
+					<EVENTS>
+						<TIMING-EVENT>
+							<SHORT-NAME name="TimedEvent" />
+							<START-ON-EVENT-REF DEST="/SWC1/INTERNAL_BEH1/Runnable1"/>
+							<PERIOD value="500" unit="ms"/>
+						</TIMING-EVENT>
+					</EVENTS>
+				</SWC-INTERNAL-BEHAVIOR>
+			</INTERNAL-BEHAVIORS>
+		</APPLICATION-SW-COMPONENT-TYPE>
+		<APPLICATION-SW-COMPONENT-TYPE>
+			<SHORT-NAME name="SWC2" />
+			<PORTS>
+				<R-PORT-PROTOTYPE>
+					<SHORT-NAME name="RP1" />
+					<REQUIRED-INTERFACE-TREF DEST="Interface1"/>
+				</R-PORT-PROTOTYPE>
+			</PORTS>
+			<INTERNAL-BEHAVIORS>
+				<SWC-INTERNAL-BEHAVIOR>
+					<SHORT-NAME name="INTERNAL_BEH2" />
+					<RUNNABLES>
+						<RUNNABLE-ENTITY>
+							<SHORT-NAME name="Runnable2" />
+							<DATA-READ-ACCESS>
+								<VARIABLE-ACCESS>
+									<SHORT-NAME name="RData2" />
+									<ACCESSED-VARIABLE>
+										<AUTOSAR-VARIABLE-IREF>
+											<PORT-PROTOTYPE-REF DEST="/SWC2/RP1"/>
+											<TARGET-DATA-PROTOTYPE-REF DEST="/Interface1/Data1"/>
+										</AUTOSAR-VARIABLE-IREF>
+									</ACCESSED-VARIABLE>
+								</VARIABLE-ACCESS>
+							</DATA-READ-ACCESS>
+						</RUNNABLE-ENTITY>
+					</RUNNABLES>
+					<EVENTS>
+						<DATA-RECEIVED-EVENT>
+							<SHORT-NAME name="ReceivedEvent1" />
+							<START-ON-EVENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable2"/>
+							<DATA-IREF>
+								<TARGET-DATA-ELEMENT-REF DEST="/SWC2/INTERNAL_BEH2/Runnable2/RData2"/>
+							</DATA-IREF>
+						</DATA-RECEIVED-EVENT>
+					</EVENTS>
+				</SWC-INTERNAL-BEHAVIOR>
+			</INTERNAL-BEHAVIORS>
+		</APPLICATION-SW-COMPONENT-TYPE>
+		<Network-Topology>
+			<InterECU_communication>
+				<CAN-BUS>
+					<SHORT-NAME name="CAN1"/>
+					<BaudRate />
+					<INTERFACE-TREF DEST="/Interface1" />
+					
+				</CAN-BUS>
+			</InterECU_communication>
+		</Network-Topology>
+		<ECUs>
+			<SHORT-NAME name="ECU1" />
+			<SoCs>
+				<SHORT-NAME name="SoC1" />
+				<AXI-BUS />
+				<ETHERNET-INTERFACE />
+				<UCIe-INTERFACE Mode="host" />
+				<CPU_Cluster>
+					<Operating-System>
+						<Nucleus_RTOS />
+					</Operating-System>
+					<ARMV8-Family>
+						<CortexA53 CoresPerCluster="1">
+							<SHORT-NAME name="CortexA53_1"/>
+							<Frequency value="100000000"/>
+							<!-- <Core>
+								<SHORT-NAME name="Core1" />
+								<Core-runnable-Mapping DEST="/SWC1/INTERNAL_BEH1/Runnable1" Load="100" priority="8" />
+							</Core> -->
+						</CortexA53>
+					</ARMV8-Family>
+					<!-- <POWER-PARAMETERS /> -->
+				</CPU_Cluster>
+			</SoCs>
+		</ECUs>
+		<ECUs>
+			<SHORT-NAME name="ECU2"/>
+			<SoCs>
+				<SHORT-NAME name="SoC2" />
+				<AXI-BUS />
+				<ETHERNET-INTERFACE />
+				<UCIe-INTERFACE Mode="host" />
+				<CPU_Cluster>
+					<Operating-System>
+						<Nucleus_RTOS />
+					</Operating-System>
+					<ARMV8-Family>
+						<CortexA57 CoresPerCluster="1">
+							<SHORT-NAME name="CortexA57_2"/>
+							<Frequency value="100000000"/>
+							<!-- <Core>
+								<SHORT-NAME name="Core2" />
+								<Core-runnable-Mapping DEST="/SWC2/INTERNAL_BEH2/Runnable2" Load="100" priority="8" />
+							</Core> -->
+						</CortexA57>
+					</ARMV8-Family>
+					<!-- <POWER-PARAMETERS /> -->
+				</CPU_Cluster>
+			</SoCs>
+		</ECUs>
+
+		<HW-SW-MAPPING ClusterRef="/ECU1/SoC1/CortexA53_1">
+			<Core-Runnable-Mapping CoreId="0" RunnableRef="/SWC1/INTERNAL_BEH1/Runnable1"    Load="100" Priority="8"/>
+		</HW-SW-MAPPING>     
+
+		<HW-SW-MAPPING ClusterRef="/ECU2/SoC2/CortexA57_2">
+			<Core-Runnable-Mapping CoreId="0" RunnableRef="/SWC2/INTERNAL_BEH2/Runnable2"    Load="1000" Priority="8"/>
+		</HW-SW-MAPPING>     
+
+		<Analysis>
+			<SW-Analysis-Enable>
+				<ALL-SoCs/>
+			</SW-Analysis-Enable>
+			<HW-Analysis-Enable>
+				<ALL-SoCs/>
+			</HW-Analysis-Enable>
+			<!-- <Power-Analysis-Enable>
+				<ALL-SoCs/>
+			</Power-Analysis-Enable> -->
+			<Network-Analysis-Enable>
+				<CAN-BUS-Monitor-Enable/> 
+				<ETH-Switch-Monitor-Enable/>
+			</Network-Analysis-Enable>
+		</Analysis>
+	</ELEMENTS>
+</AR-PACKAGE>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AR-PACKAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="AE_XSD_schema.xsd">
+    <ELEMENTS>
+        <Simulation-Time value="5" unit="s" />
+
+        <PRE-BUILT-APPLICATION>
+            <SHORT-NAME name="PreBuilt_Application_0"/>
+            <PATH DEST="<<TEST_OUT_PATH>>/software/dma_single_host/host/my_application"/>
+			
+        </PRE-BUILT-APPLICATION>
+
+        <PRE-BUILT-APPLICATION>
+            <SHORT-NAME name="PreBuilt_Application_1"/>
+            <PATH DEST="<<TEST_OUT_PATH>>/software/dma_single_host/endpoint/my_application"/>
+        </PRE-BUILT-APPLICATION>
+
+        <ECUs>
+            <SHORT-NAME name="ECU0"/>
+			<SoCs>
+				<SHORT-NAME name="SoC0"/>
+				<AXI-BUS />
+				<ETHERNET-INTERFACE Mode="simulated"/>
+                <UCIe-INTERFACE Mode="host"/>
+				<Chiplet>
+                    <SHORT-NAME name="Chiplet0"/>
+                    <AXI-BUS width="4" frequency="1000000000"/>
+                    <ETHERNET-INTERFACE Mode="native"/>
+					<UCIe-INTERFACE Mode="host"/>
+					<CPU_Cluster>
+						<Operating-System>
+							<Linux Affine-tasks-byOS="false" Show_UART_Terminal="true">
+								<Buildroot_File_System/>
+							</Linux>
+						</Operating-System>
+						<ARMV8-Family>
+							<CortexA53 CoresPerCluster="1">
+								<SHORT-NAME name="CPU1"/>
+								<Frequency value="1000000000"/>
+							</CortexA53>
+						</ARMV8-Family>
+					</CPU_Cluster>
+				</Chiplet>
+				<Chiplet>
+                    <SHORT-NAME name="Chiplet1"/>
+                    <AXI-BUS width="4" frequency="1000000000"/>
+                    <ETHERNET-INTERFACE />
+					<UCIe-INTERFACE Mode="endpoint"/>
+					<CPU_Cluster>
+						<Operating-System>
+							<Linux Affine-tasks-byOS="false" Show_UART_Terminal="true">
+								<Buildroot_File_System/>
+							</Linux>
+						</Operating-System>
+						<ARMV8-Family>
+							<CortexA53 CoresPerCluster="1">
+								<SHORT-NAME name="CPU1"/>
+								<Frequency value="1000000000"/>
+							</CortexA53>
+						</ARMV8-Family>
+					</CPU_Cluster>
+				</Chiplet>
+			</SoCs>
+        </ECUs>
+
+	    <HW-SW-MAPPING ClusterRef="/ECU0/SoC0/Chiplet0/CPU1">
+            <Cluster-PrebuiltApplication-Mapping PrebuiltApplicationRef="/PreBuilt_Application_0"/>
+        </HW-SW-MAPPING>
+
+    	<HW-SW-MAPPING ClusterRef="/ECU0/SoC0/Chiplet1/CPU1">
+            <Cluster-PrebuiltApplication-Mapping PrebuiltApplicationRef="/PreBuilt_Application_1"/>
+        </HW-SW-MAPPING>
+
+		<Analysis>
+			<SW-Analysis-Enable>
+				<ALL-SoCs/>
+			</SW-Analysis-Enable>
+			<HW-Analysis-Enable>
+				<ALL-SoCs/>
+			</HW-Analysis-Enable>
+			<Network-Analysis-Enable>
+				<CAN-BUS-Monitor-Enable/> 
+				<ETH-Switch-Monitor-Enable/>
+			</Network-Analysis-Enable>
+		</Analysis>
+    </ELEMENTS>
+</AR-PACKAGE>
