@@ -1,0 +1,5 @@
+[xsdata.plugins.class_types]
+xsdata_pydantic = xsdata_pydantic.hooks.class_type
+
+[xsdata.plugins.cli]
+xsdata_attrs = xsdata_pydantic.hooks.cli
